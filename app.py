@@ -21,6 +21,12 @@ def get_db_connection():
         password="1234",
         database="conocancer"
     )
+# ------------------------
+# Root route to redirect to app 
+# ------------------------
+@app.route("/")
+def root():
+    return redirect(url_for("index.html"))
 
 # ------------------------
 # Inject user_name globally into all templates
