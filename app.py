@@ -539,7 +539,7 @@ def evaluate_study_quiz():
     return jsonify({"summary": summary})
 
 
-openai.api_key = os.getenv("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")  # set this in your environment
+openai.api_key = os.getenv('openai_key')  # set this in your environment
 
 @app.route("/api/transcribe_whisper", methods=["POST"])
 def transcribe_whisper():
