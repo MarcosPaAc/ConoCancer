@@ -1,12 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash,jsonify
 from flask import current_app
 import requests
-import mysql.connector
+import mysql.connector  # We're already using this
 import hashlib
 import json
 import os
 import openai
-
 
 app = Flask(__name__)
 app.secret_key = 'super_secret_key'  # 🔐 Use env var in production
@@ -16,10 +15,10 @@ app.secret_key = 'super_secret_key'  # 🔐 Use env var in production
 # ------------------------
 def get_db_connection():
     return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="1234",
-        database="conocancer"
+        host=os.environ.get('MYSQL_HOST', 'localhost'),
+        user=os.environ.get('MYSQL_USER', 'root'),
+        password=os.environ.get('MYSQL_PASSWORD', '1234'),
+        database=os.environ.get('MYSQL_DATABASE', 'conocancer')
     )
 # ------------------------
 # Root route to redirect to app 

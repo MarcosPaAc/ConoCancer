@@ -7,7 +7,6 @@ click==8.1.8
 colorama==0.4.6
 distro==1.9.0
 Flask==3.1.0
-Flask-MySQLdb==2.0.0
 gunicorn==23.0.0
 h11==0.16.0
 httpcore==1.0.9
@@ -18,7 +17,7 @@ Jinja2==3.1.6
 jiter==0.9.0
 MarkupSafe==3.0.2
 mysql-connector-python==9.3.0
-mysqlclient==2.2.7
+# Removed mysqlclient as it requires native libraries
 openai==1.77.0
 packaging==25.0
 pydantic==2.11.4
