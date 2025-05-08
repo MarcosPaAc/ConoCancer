@@ -1,0 +1,80 @@
+﻿[
+  {
+    "Hospital Name": "Huntington Hospital",
+    "Hospital URL": "https://huntington.northwell.edu/",
+    "Address": "270 Park Avenue, Huntington, NY 11743",
+    "Phone Number": "+16313512000",
+    "Description": "We offer world-class care in specialties including neurosurgery, orthopedics and cancer services."
+  },
+
+  {
+    "Hospital Name": "South Oaks Hospital",
+    "Hospital URL": "https://southoaks.northwell.edu/",
+    "Address": "400 Sunrise Highway, Amityville, NY 11701",
+    "Phone Number": "+16312644000",
+    "Description": "Our inpatient services include child and adolescent, adult and senior units, as well as substance use or opioid use disorder treatment, including services tailored for health care professionals dealing with addiction."
+  },
+
+  {
+    "Hospital Name": "Glen Cove Hospital",
+    "Hospital URL": "https://glencove.northwell.edu/",
+    "Address": "101 St. Andrews Lane, Glen Cove, NY 11542",
+    "Phone Number": "+15166747300",
+    "Description": "Glen Cove Hospital, specializing in treating surgical, emergency & critical care patients, is an award-winning member of Northwell Health."
+  },
+
+  {
+    "Hospital Name": "Phelps Hospital",
+    "Hospital URL": "https://phelps.northwell.edu/",
+    "Address": "701 N. Broadway, Sleepy Hollow, NY 10591",
+    "Phone Number": "+19143663000",
+    "Description": "We offer exceptional care in a wide range of specialties, including orthopedics, cancer and neurology."
+  },
+
+  {
+    "Hospital Name": "Northwell Greenwich Village Hospital",
+    "Hospital URL": "https://gvh.northwell.edu/",
+    "Address": "30 7th Avenue, New York, NY 10011",
+    "Phone Number": "+16466656000",
+    "Description": "Northwell Greenwich Village Hospital blends health and wellness services with access to 24-hour emergency care and a full range of medical specialists."
+  },
+
+  {
+    "Hospital Name": "Zucker Hillside Hospital",
+    "Hospital URL": "https://zucker.northwell.edu/",
+    "Address": "75-59 263rd St., Glen Oaks, NY 11004",
+    "Phone Number": "+17184708100",
+    "Description": ""
+  },
+
+  {
+    "Hospital Name": "Manhattan Eye, Ear & Throat Hospital",
+    "Hospital URL": "https://meeth.northwell.edu/",
+    "Address": "210 East 64th Street, New York, NY 10065",
+    "Phone Number": "+12128389200",
+    "Description": "Manhattan Eye, Ear & Throat Hospital (MEETH) is a specialized center that opened its doors almost 150 years ago with a focus on high-quality care for eye, ear and throat conditions."
+  },
+
+  {
+    "Hospital Name": "Long Island Jewish Valley Stream",
+    "Hospital URL": "https://valleystream.northwell.edu/",
+    "Address": "900 Franklin Avenue, Valley Stream, NY 11580",
+    "Phone Number": "+15162566000",
+    "Description": "Our hospital provides comprehensive care for the Nassau and southeastern Queens communities, with extensive expertise in areas including cardiology, gastroenterology, urology, wound care, general and vascular surgery, emergency medicine and orthopedics."
+  },
+
+  {
+    "Hospital Name": "Long Island Jewish Forest Hills",
+    "Hospital URL": "https://foresthills.northwell.edu/",
+    "Address": "102-01 66th Road, Forest Hills, NY 11375",
+    "Phone Number": "+17188304000",
+    "Description": ""
+  },
+  {
+    "Hospital Name": "Plainview Hospital",
+    "Hospital URL": "https://plainview.northwell.edu/",
+    "Address": "888 Old Country Road, Plainview, NY 11803",
+    "Phone Number": "+15167193000",
+    "Description": "Plainview Hospital offers exceptional care in specialties including pediatric urology surgery, hyperbaric medicine and women's services."
+  }
+]

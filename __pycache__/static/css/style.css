@@ -1,0 +1,834 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-main); /* ✔️ consistent with global */
+}
+
+
+body {
+  background-color: #f8f4f1;
+  color: #333;
+}
+body.fade-out {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* =============== SIDEBAR =============== */
+.sidebar {
+  width: 300px;
+  background-color: #fff;
+  padding: 30px;
+  border-right: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: mediumpurple;
+  padding: 10px;
+}
+
+.logo img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+
+.sidebar-nav ul {
+  list-style: none;
+}
+
+.sidebar-nav li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+  cursor: pointer;
+  color: #999;
+  transition: all 0.3s;
+}
+
+.sidebar-nav li.active,
+.sidebar-nav li:hover {
+  color: #7f32e0;
+  font-weight: bold;
+}
+
+.sidebar-nav img {
+  width: 20px;
+  height: 20px;
+}
+
+.illustration img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* =============== MAIN CONTENT =============== */
+.main-content {
+  flex: 2;
+  padding: 30px;
+}
+
+/* Top Bar */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.welcome span {
+  color: #7f32e0;
+  font-weight: bold;
+}
+
+.language {
+  background-color: transparent;
+  color: #78297C;
+  border: 1px solid #78297C;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.language:hover {
+  background-color: #eee;
+  color: #333;
+  border-color: #999;
+}
+
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+
+
+/* Section Header */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0 10px;
+}
+
+/* =============== COURSES GRID =============== */
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+  column-gap: 0px; /* Decrease this value (before maybe 50px or 30px) */
+  row-gap: 20px; /* Nice space between top and bottom cards */
+  margin-top: 20px;
+  max-width: 800px;
+   justify-content: center;
+}
+
+
+.card {
+  padding: 30px 20px 60px 20px;
+  border-radius: 16px;
+  color: white;
+  font-weight: bold;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5px;
+  width: 300px;
+  height: 150px; /* Uniform height */
+}
+
+
+
+.card img {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 5px;
+}
+
+.card small {
+  font-weight: normal;
+  color: #f8f8f8; /* slightly off-white for better readability */
+}
+
+.card span {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+.card-title {
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 5px;
+   color: #ffffff;
+}
+
+.progress-ring {
+  --progress: 75;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #ffffff calc(var(--progress) * 1%),
+    rgba(255, 255, 255, 0.2) 0
+  );
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.progress-ring {
+  --progress: 75;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #ffffff calc(var(--progress) * 1%),
+    rgba(255, 255, 255, 0.2) 0
+  );
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-ring::before {
+  content: '';
+  width: 42px;
+  height: 42px;
+  background: #a084dc; /* match card background or use transparent */
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+
+}
+.card.green .progress-ring::before {
+  background: #70c27a;
+}
+.card.purple .progress-ring::before {
+  background: #a084dc;
+}
+.card.orange .progress-ring::before {
+  background: #ffa552;
+}
+.card.yellow .progress-ring::before {
+  background: #f7c948;
+}
+
+.progress-text {
+  position: relative;
+  z-index: 2;
+  font-size: 13px;
+  font-weight: bold;
+  color: white;
+}
+
+
+/* Color Classes */
+
+ .purple {
+  background: linear-gradient(135deg, #9d7cc9, #7d5fb1); /* darker purple */
+}
+
+.orange {
+  background: linear-gradient(135deg, #ffb380, #ff944d); /* stronger orange */
+}
+
+.green {
+  background: linear-gradient(135deg, #8bd694, #5cad65); /* stronger green */
+}
+
+.yellow {
+  background: linear-gradient(135deg, #ffd966, #f7c948); /* stronger yellow */
+}
+
+/* =============== VIDEOS SECTION =============== */
+.video-card {
+  background: #fff;
+  padding: 16px;
+  border-radius: 16px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Colored icon box */
+.icon-box {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-box img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Details */
+.video-details {
+  flex: 1;
+  margin-left: 15px;
+}
+
+.video-title {
+  font-weight: 600;
+  font-size: 15px;
+  color: #333;
+}
+
+.video-time {
+  font-size: 13px;
+  color: #888;
+  margin-top: 4px;
+}
+.video-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* space between each card */
+  margin-top: 10px;
+}
+
+
+/* Menu */
+.menu-icon {
+  font-size: 20px;
+  color: #999;
+  cursor: pointer;
+}
+
+/* Color themes */
+.icon-box.blue {
+  background-color: #e6efff;
+}
+
+.icon-box.orange {
+  background-color: #fff3e6;
+}
+
+.icon-box.green {
+  background-color: #e8f7e8;
+}
+
+
+.date {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #777;
+  font-size: 14px;
+}
+
+.calendar-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+
+/* =============== STATS PANEL =============== */
+.stats {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 60px;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #F2E9EB;
+}
+
+
+
+.stats h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 20px;
+}
+
+
+.stat-box {
+  background: #f3d9eb;
+  padding: 30px 24px;
+  border-radius: 16px;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* stat title */
+.stat-box h4 {
+  font-size: 14px;
+  color: #5a005a;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* number + line container (your <p>) */
+.stat-box p {
+  font-size: 26px;
+  color: #772f81;
+  font-weight: bold;
+  margin: 0;
+  display: flex;
+  align-items: center; /* or flex-end if you want bottom alignment */
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+
+/* the number itself */
+.stat-number {
+  font-size: 32px;
+  color: #7f32e0;
+  font-weight: bold;
+}
+
+/* the vertical line */
+.stat-line {
+  background-color: red;
+  border: 1px solid black;
+}
+
+
+
+
+
+
+.stats-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.stats-info {
+  flex: 1;
+}
+
+
+
+
+/* =============== USER PROFILE CARD ABOVE STATS =============== */
+.profile-card {
+  background: #f5e9f3;
+  padding: 12px 16px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: space-between;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  width: fit-content;
+  float: right;
+  margin-bottom: 40px;
+    position: relative; /* VERY important for proper dropdown positioning */
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-info img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+}
+
+.user-details strong {
+  display: block;
+  font-size: 14px;
+  color: #222;
+}
+
+.user-details span {
+  font-size: 12px;
+  color: #777;
+}
+
+.dropdown-toggle {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #444;
+}
+
+
+/* Dropdown Menu Style */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%; /* Exactly underneath the profile card */
+  left: 0; /* Aligned to left */
+  margin-top: 8px; /* tiny gap */
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  width: 180px;
+  z-index: 10;
+  padding: 10px 0;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-menu li {
+  padding: 12px 20px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f3e8ff;
+  color: #7f32e0;
+}
+
+/* Confirm Modal */
+.confirm-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.confirm-box {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  min-width: 300px;
+}
+
+.confirm-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.confirm-buttons button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#confirmYes {
+  background-color: #7f32e0;
+  color: white;
+}
+
+#confirmNo {
+  background-color: #ccc;
+}
+
+
+
+#confirmYes:hover {
+  background-color: #6a28bf;
+}
+
+#confirmNo:hover {
+  background-color: #bbb;
+}
+
+
+.profile-card:hover .dropdown-menu {
+  display: block;
+}
+a {
+  color: black; /* Default link color */
+  text-decoration: none; /* No underline */
+  transition: color 0.3s ease; /* Smooth color change */
+}
+
+a:hover {
+  color: #7f32e0; /* Nice purple shade (matches your theme) */
+}
+/* ===============================
+   📱 MOBILE (up to 600px)
+================================== */
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px 20px;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .sidebar-nav ul {
+    display: flex;
+    gap: 10px;
+  }
+
+  .sidebar-nav li {
+    margin: 0;
+    font-size: 12px;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr; /* Stack cards vertically */
+    row-gap: 20px;
+    column-gap: 0;
+    justify-content: center;
+  }
+
+  .card {
+    width: 100%;
+    height: auto;
+  }
+
+  .video-card {
+    width: 100%;
+  }
+
+  .stats {
+    padding: 20px;
+  }
+
+  .stat-grid {
+    grid-template-columns: 1fr; /* Stats stacked vertically */
+  }
+}
+
+/* ===============================
+   📱📲 TABLETS (601px to 900px)
+================================== */
+@media (min-width: 601px) and (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 15px 20px;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .sidebar-nav ul {
+    display: flex;
+    gap: 20px;
+  }
+
+  .sidebar-nav li {
+    margin: 0;
+    font-size: 14px;
+  }
+
+  .main-content {
+    padding: 30px;
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr 1fr; /* Two cards per row */
+    gap: 15px;
+    justify-content: center;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .video-card {
+    width: 100%;
+  }
+
+  .stat-grid {
+    grid-template-columns: 1fr 1fr; /* Two stats per row */
+  }
+}
+
+/* ===============================
+   🖥️ DESKTOP (901px and up)
+================================== */
+@media (min-width: 901px) {
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr); /* Normal 2 columns */
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr); /* Normal 2 columns */
+  }
+}
+/* ===============================
+   💻 LAPTOPS (901px to 1440px)
+================================== */
+@media (min-width: 901px) and (max-width: 1440px) {
+  .container {
+  flex-wrap: wrap;
+}
+  .sidebar {
+    width: 260px; /* Slightly slimmer sidebar for laptops */
+    padding: 20px;
+  }
+
+  .sidebar-nav li {
+    font-size: 14px;
+  }
+
+  .main-content {
+    padding: 30px;
+  }
+
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px; /* add nice breathing space between cards */
+    row-gap: 25px;
+  }
+
+  .card {
+    width: 260px;
+    height: 160px;
+  }
+
+  .video-card {
+    width: 90%;
+  }
+
+  .stats {
+    padding: 20px 40px;
+    max-width: 500px;
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .profile-card {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+/* 🔥 Hide sidebar and show hamburger on smaller screens */
+@media (max-width: 900px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px; /* hide it off screen */
+    width: 260px;
+    height: 100%;
+    background: #fff;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    padding: 20px;
+    transition: left 0.3s ease;
+    z-index: 200;
+  }
+
+  .sidebar.active {
+    left: 0; /* slide it in */
+  }
+
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 26px;
+    color: #7f32e0;
+    cursor: pointer;
+  }
+}
+
+/* 💻 By default hide the menu button on big screens */
+.menu-toggle {
+  display: none;
+}
+
+.flashes {
+  list-style: none;
+  padding: 0;
+  margin: 1em 0;
+}
+
+.flashes li.success {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 10px;
+  border: 1px solid #c3e6cb;
+  border-radius: 5px;
+}
+
+.flashes li.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+}

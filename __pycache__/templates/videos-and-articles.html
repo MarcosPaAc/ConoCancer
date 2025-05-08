@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ConoCancer | Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}" />
+</head>
+<body data-username="{{ user_name }}">
+  <div class="container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="logo">
+        <span>ConoCancer</span>
+      </div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li><a href="{{ url_for('dashboard') }}"><img src="{{ url_for('static', filename='imgs/Home.png') }}" alt="Overview Icon" /> <span id="nav-overview">Dashboard</span></a></li>
+      <li class="active"><a href="{{ url_for('videos_and_articles') }}"><img src="{{ url_for('static', filename='imgs/Folder.png') }}" alt="Videos Icon" /> <span id="nav-videos">Videos & Articles</span></a></li>
+      <li><a href="{{ url_for('resources') }}"><img src="{{ url_for('static', filename='imgs/Chat.png') }}" alt="Resources Icon" /> <span id="nav-resources">Resources</span></a></li>
+      <li><a href="{{ url_for('progress') }}"><img src="{{ url_for('static', filename='imgs/Category.png') }}" alt="Progress Icon" /> <span id="nav-progress">Progress</span></a></li>
+      <li><a href="{{ url_for('setting') }}"><img src="{{ url_for('static', filename='imgs/Setting.png') }}" alt="Settings Icon" /> <span id="nav-settings">Settings</span></a></li>
+    </ul>
+        </ul>
+      </nav>
+      <div class="illustration">
+        <img src="{{ url_for('static', filename='imgs/image 1.png') }}" alt="Sidebar Illustration" />
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <header class="top-bar">
+        <div class="top-center">
+          <button class="language">Español</button>
+        </div>
+        <div class="top-right">
+          <div class="profile-card">
+            <div class="user-info">
+               <span id="user-photo" style="font-size: 20px; display: inline-block; line-height: 1;" aria-label="User">👤</span>
+              <div class="user-details">
+                <strong id="profile-name">{{ user_name }}</strong>
+              </div>
+              <button class="dropdown-toggle" id="dropdownToggle">▼</button>
+            </div>
+            <div class="dropdown-menu" id="dropdownMenu">
+              <ul>
+                <li id="logoutBtn">Log Out</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="confirm-modal" id="confirmModal">
+            <div class="confirm-box">
+              <p>Are you sure you want to log out?</p>
+              <div class="confirm-buttons">
+                <button id="confirmYes">Yes</button>
+                <button id="confirmNo">No</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="courses-section">
+        <h2 class="section-title" id="section-categories">Categories</h2>
+    <div class="course-list">
+
+      <div class="course-item">
+        <div class="course-left">
+          <div class="course-number">1</div>
+          <div class="course-text">
+            <h3 id="course-intro-title">Introduction</h3>
+            <p id="course-intro-desc">An overview of breast cancer</p>
+          </div>
+        </div>
+        <a href="{{ url_for('introduction') }}" class="view-btn" id="course-intro-view">View</a>
+      </div>
+
+      <div class="course-item">
+        <div class="course-left">
+          <div class="course-number">2</div>
+          <div class="course-text">
+            <h3 id="course-screening-title">Screening & Detection</h3>
+            <p id="course-screening-desc">Understanding screening methods</p>
+          </div>
+        </div>
+        <a href="{{ url_for('screening_detection') }}" class="view-btn" id="course-screening-view">View</a>
+      </div>
+
+      <div class="course-item">
+        <div class="course-left">
+          <div class="course-number">3</div>
+          <div class="course-text">
+            <h3 id="course-diagnosis-title">Diagnosis</h3>
+            <p id="course-diagnosis-desc">Steps in diagnosing breast cancer</p>
+          </div>
+        </div>
+        <a href="{{ url_for('diagnosis') }}" class="view-btn" id="course-diagnosis-view">View</a>
+      </div>
+
+      <div class="course-item">
+        <div class="course-left">
+          <div class="course-number">4</div>
+          <div class="course-text">
+            <h3 id="course-treatment-title">Treatment</h3>
+            <p id="course-treatment-desc">Treatment options available</p>
+          </div>
+        </div>
+        <a href="{{ url_for('treatment') }}" class="view-btn" id="course-treatment-view">View</a>
+      </div>
+
+      <div class="course-item">
+        <div class="course-left">
+          <div class="course-number">5</div>
+          <div class="course-text">
+            <h3 id="course-survivorship-title">Survivorship</h3>
+            <p id="course-survivorship-desc">Life after treatment</p>
+          </div>
+        </div>
+        <a href="{{ url_for('survivorship') }}" class="view-btn" id="course-survivorship-view">View</a>
+      </div>
+
+    </div>
+      </section>
+
+      <!-- Feedback Section Inline -->
+      <button id="feedback-btn" class="feedback-fab">💬 Feedback</button>
+
+      <div id="feedback-modal" class="modal hidden">
+        <div class="modal-content">
+          <button class="close-modal">&times;</button>
+          <h2>Feedback Form</h2>
+          <p class="modal-subtitle">We'd love to hear from you! Your feedback helps us improve the experience for everyone.</p>
+          <form id="feedback-form">
+            <div class="form-group">
+              <p><strong>How is your experience using the site?</strong></p>
+              <div class="rating-options">
+                <label><input type="radio" name="experience" value="Not great"> Not great</label>
+                <label><input type="radio" name="experience" value="Okay"> Okay</label>
+                <label><input type="radio" name="experience" value="Good"> Good</label>
+                <label><input type="radio" name="experience" value="Great"> Great</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <p><strong>Did you experience any problems?</strong></p>
+              <div id="problem-options">
+                <label><input type="checkbox" name="problem" value="Audio did not play"> Audio did not play</label>
+                <label><input type="checkbox" name="problem" value="The video didn’t load"> The video didn’t load</label>
+                <label><input type="checkbox" name="problem" value="Transcription issue"> The studio didn’t transcribe my voice correctly</label>
+                <label><input type="checkbox" name="problem" value="Language switch issue"> The language didn’t switch properly</label>
+                <label><input type="checkbox" name="problem" value="Confusing content"> Something was confusing</label>
+                <label><input type="checkbox" name="problem" value="Other"> Other</label>
+              </div>
+              <textarea placeholder="The video..." name="problem-detail"></textarea>
+            </div>
+            <div class="form-group">
+              <p><strong>Anything else you’d like to share?</strong></p>
+              <textarea name="additional-feedback" placeholder="It was hard to understand one of the quiz questions..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Feedback</button>
+          </form>
+          <p class="thank-you">We appreciate your time—thank you for helping us improve!</p>
+        </div>
+      </div>
+    </main>
+  </div>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class="flashes">
+      {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+  <script>
+    async function fetchUserData() {
+      return {
+        name: "{{ user_name }}",
+        joinDate: "Apr 2025",
+        photo: "default-user-icon.png",
+        stats: {
+          completed: 0,
+          watched: 0,
+          inProgress: 0,
+          quizzes: 0
+        },
+        courses: [
+          { id: "overview", percent: 0 },
+          { id: "diagnosis", percent: 0 },
+          { id: "treatment", percent: 0 },
+          { id: "survivor", percent: 0 }
+        ],
+        upcoming: []
+      };
+    }
+    </script>
+
+  <!-- Scripts -->
+  <script src="{{ url_for('static', filename='js/video.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/feedback.js') }}" defer></script>
+</body>
+</html>

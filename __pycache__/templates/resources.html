@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Health Dashboard - Long Island Focus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/resource.css') }}">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- ✅ Leaflet Geocoder CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+  <!-- ✅ Leaflet Geocoder JS -->
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js" defer></script>
+</head>
+
+
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo"><span class="logo-text">ConoCancer</span></div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li ><a href="{{ url_for('dashboard') }}"><img src="{{ url_for('static', filename='imgs/Home.png') }}" alt="Overview Icon" /> <span>Dashboard</span></a></li>
+          <li><a href="{{ url_for('videos_and_articles') }}"><img src="{{ url_for('static', filename='imgs/Folder.png') }}" alt="Videos Icon" /> <span>Videos & Articles</span></a></li>
+          <li class="active"><a href="{{ url_for('resources') }}"><img src="{{ url_for('static', filename='imgs/Chat.png') }}" alt="Resources Icon" /> <span>Resources</span></a></li>
+          <li><a href="{{ url_for('progress') }}"><img src="{{ url_for('static', filename='imgs/Category.png') }}" alt="Progress Icon" /> <span>Progress</span></a></li>
+          <li><a href="{{ url_for('setting') }}"><img src="{{ url_for('static', filename='imgs/Setting.png') }}" alt="Settings Icon" /> <span>Setting</span></a></li>
+        </ul>
+      </nav>
+      <div class="illustration"><img src="{{ url_for('static', filename='imgs/image 1.png') }}" alt="Illustration" /></div>
+    </aside>
+ 
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Top bar -->
+    <header class="top-row">
+      <div class="top-center">
+        <button class="language">Español</button>
+      </div>
+      <div class="top-right">
+        <div class="profile-card">
+          <div class="user-info">
+            <span id="user-photo" style="font-size: 20px; display: inline-block; line-height: 1;" aria-label="User">👤</span>
+            <div class="user-details">
+              <strong id="profile-name">{{ user_name }}</strong>
+             
+            </div>
+            <button class="dropdown-toggle" id="dropdownToggle">▼</button>
+          </div>
+          <!-- 🔻 DROPDOWN MENU -->
+<div class="dropdown-menu" id="dropdownMenu">
+  <ul>
+    <li id="logoutBtn">Log Out</li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- Panel Section -->
+    <section class="panel-wrapper">
+      <div class="panel hospitals-panel">
+        <h3>Hospitals and Clinics</h3>
+        <div id="map" class="map"></div>
+        <div class="center-list" id="hospitalList">
+  <!-- Hospital cards will be dynamically inserted here -->
+</div>
+<a href="#" class="view-all" id="openHospitalModal">View All</a>
+
+
+      </div>
+
+      <div class="panel support-panel">
+        <h3>Support Groups</h3>
+        <div class="support-card-list" id="supportGroupList">
+  <!-- Support group cards will be dynamically inserted here -->
+</div>
+<a href="#" class="view-all" id="openSupportModal">View All</a>
+
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="hospital-modal" id="hospitalModal">
+  <div class="modal-content">
+    <button class="close-btn" id="closeModalBtn">✕</button>
+    <div class="modal-header">
+      <input type="text" id="addressSearchInput" placeholder="Address, City, ZIP" class="search-input" />
+      <button>Hospitals</button>
+      <button>Clinics</button>
+      <select>
+        <option>Insurance type</option>
+        <option>Private</option>
+        <option>Public</option>
+      </select>
+    </div>
+
+<div class="modal-body">
+      <!-- Inside .modal-body > .results-panel -->
+      <div class="modal-body">
+        <div class="results-panel">
+          <h4>Long Island Hospitals and Clinics</h4>
+          <p id="hospitalCount">Loading...</p>
+          <div id="modalHospitalList"><!-- JS will inject hospital results here --></div>
+        </div>
+     
+        <div class="map-panel">
+          <div id="modalMap"></div>
+          <p class="disclaimer">
+            Disclaimer: The additional resources provided on this platform are for informational purposes only...
+          </p>
+        </div>
+      </div> <!-- this is the ONLY closing div for .modal-body -->
+     
+  </div>
+</div>
+<div class="detail-modal" id="detailModal">
+  <div class="detail-box">
+    <button class="close-detail" id="closeDetail">✕</button>
+    <h3>Memorial Cancer Center</h3>
+    <img src="hospital-photo.jpg" alt="Memorial Cancer Center" class="hospital-img" />
+    <p>123 Health Ave, New York, NY 10001</p>
+    <p>(212) 555-0123</p>
+    <p>Mon–Fri: 8AM–6PM</p>
+
+    <div class="tags">
+      <p><strong>Accepted Insurance:</strong></p>
+      <span class="tag">Medicaid</span>
+      <span class="tag">BlueCross</span>
+      <span class="tag">United</span>
+
+      <p style="margin-top: 10px;"><strong>Services:</strong></p>
+      <span class="tag">Radiation</span>
+      <span class="tag">Chemotherapy</span>
+    </div>
+  </div>
+</div>
+<div class="detail-popup" id="detailPopup">
+  <div class="popup-box">
+    <button class="close-popup" id="closeDetailPopup">✕</button>
+    <h3>Memorial Cancer Center</h3>
+    <img src="hospital-photo.jpg" class="popup-img" alt="Hospital Photo" />
+    <p>123 Health Ave, New York, NY 10001</p>
+    <p>(212) 555-0123</p>
+    <p>Mon–Fri: 8AM–6PM</p>
+
+    <div class="popup-section" id="popupInsurance">
+      <p><strong>Accepted Insurance:</strong></p>
+      <span class="popup-tag">Medicaid</span>
+      <span class="popup-tag">Aetna</span>
+      <span class="popup-tag">UnitedHealth</span>
+    </div>
+
+    <div class="popup-section" id="popupServices">
+      <p><strong>Services:</strong></p>
+      <span class="popup-tag">Radiology</span>
+      <span class="popup-tag">Chemotherapy</span>
+    </div>
+  </div>
+</div>
+<div class="support-modal" id="supportModal">
+  <div class="support-modal-content">
+  <button class="support-close" id="closeSupportModal">✕</button>
+  <h2>Support Groups</h2>
+  <div class="support-grid" id="supportGrid"><!-- Injected dynamically --></div>
+</div>
+
+      <!-- Copy this card multiple times -->
+    </div>
+  </div>
+</div>
+
+<div class="join-popup" id="joinGroupPopup">
+  <div class="join-popup-box">
+    <button class="close-join-popup" id="closeJoinPopup">✕</button>
+    <h3 id="groupName"></h3>
+    <p><strong>Language:</strong> <span id="groupLanguage"></span></p>
+    <p><strong>Schedule:</strong> <span id="groupSchedule"></span></p>
+    <p><strong>Location:</strong> <span id="groupLocation"></span></p>
+    <p><strong>Description:</strong> <span id="groupDescription"></span></p>
+    <button class="final-join">Request to Join</button>
+  </div>
+</div>
+  <!-- Feedback Button -->
+  <button id="feedback-btn" class="feedback-fab"> 💬 Feedback</button>
+
+  <!-- Feedback Modal -->
+  <div id="feedback-modal" class="modal hidden">
+    <div class="modal-content">
+      <button class="close-modal">&times;</button>
+      <h2>Feedback Form</h2>
+      <p class="modal-subtitle">We'd love to hear from you! Your feedback helps us improve the experience for everyone.</p>
+      <form id="feedback-form">
+        <div class="form-group">
+          <p><strong>How is your experience using the site?</strong></p>
+          <div class="rating-options">
+            <label><input type="radio" name="experience" value="Not great"> Not great</label>
+            <label><input type="radio" name="experience" value="Okay"> Okay</label>
+            <label><input type="radio" name="experience" value="Good"> Good</label>
+            <label><input type="radio" name="experience" value="Great"> Great</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <p><strong>Did you experience any problems?</strong></p>
+          <div id="problem-options">
+            <label><input type="checkbox" name="problem" value="Audio did not play"> Audio did not play</label>
+            <label><input type="checkbox" name="problem" value="The video didn’t load"> The video didn’t load</label>
+            <label><input type="checkbox" name="problem" value="Transcription issue"> The studio didn’t transcribe my voice correctly</label>
+            <label><input type="checkbox" name="problem" value="Language switch issue"> The language didn’t switch properly</label>
+            <label><input type="checkbox" name="problem" value="Confusing content"> Something was confusing</label>
+            <label><input type="checkbox" name="problem" value="Other"> Other</label>
+          </div>
+          <textarea placeholder="The video..." name="problem-detail"></textarea>
+        </div>
+        <div class="form-group">
+          <p><strong>Anything else you’d like to share?</strong></p>
+          <textarea name="additional-feedback" placeholder="It was hard to understand one of the quiz questions..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Feedback</button>
+      </form>
+      <p class="thank-you">We appreciate your time—thank you for helping us improve!</p>
+    </div>
+  </div>
+
+</main>
+</div>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<ul class="flashes">
+  {% for category, message in messages %}
+    <li class="{{ category }}">{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+<script>
+async function fetchUserData() {
+  return {
+    name: "{{ user_name }}",
+    joinDate: "Apr 2025",
+    photo: "default-user-icon.png",
+    stats: {
+      completed: 0,
+      watched: 0,
+      inProgress: 0,
+      quizzes: 0
+    },
+    courses: [
+      { id: "overview", percent: 0 },
+      { id: "diagnosis", percent: 0 },
+      { id: "treatment", percent: 0 },
+      { id: "survivor", percent: 0 }
+    ],
+    upcoming: []
+  };
+}
+ // === Feedback Modal
+  const feedbackBtn = document.getElementById("feedback-btn");
+  const feedbackModal = document.getElementById("feedback-modal");
+  const closeFeedbackModal = feedbackModal?.querySelector(".close-modal");
+
+  feedbackBtn?.addEventListener("click", () => {
+    feedbackModal.classList.remove("hidden");
+  });
+  closeFeedbackModal?.addEventListener("click", () => {
+    feedbackModal.classList.add("hidden");
+  });
+  window.addEventListener("click", (event) => {
+    if (event.target === feedbackModal) {
+      feedbackModal.classList.add("hidden");
+    }
+  });
+
+</script>
+
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="{{ url_for('static', filename='js/resource.js') }}" defer></script>
+<script src="{{ url_for('static', filename='js/feedback.js') }}" defer></script>
+</body>
+</html>

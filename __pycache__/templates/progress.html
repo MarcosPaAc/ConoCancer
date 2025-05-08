@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ConoCancer Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/progress.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}" />
+</head>
+<body data-username="{{ user_name }}">
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <span class="logo-text">ConoCancer</span>
+      </div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li><a href="{{ url_for('dashboard') }}"><img src="{{ url_for('static', filename='imgs/Home.png') }}" alt="Overview Icon" /> <span data-i18n="nav.dashboard">Dashboard</span></a></li>
+          <li><a href="{{ url_for('videos_and_articles') }}"><img src="{{ url_for('static', filename='imgs/Folder.png') }}" alt="Videos Icon" /> <span>Videos & Articles</span></a></li>
+          <li><a href="{{ url_for('resources') }}"><img src="{{ url_for('static', filename='imgs/Chat.png') }}" alt="Resources Icon" /> <span data-i18n="nav.resources">Resources</span></a></li>
+          <li class="active"><a href="{{ url_for('progress') }}"><img src="{{ url_for('static', filename='imgs/Category.png') }}" alt="Progress Icon" /> <span data-i18n="nav.progress">Progress</span></a></li>
+          <li><a href="{{ url_for('setting') }}"><img src="{{ url_for('static', filename='imgs/Setting.png') }}" alt="Settings Icon" /> <span data-i18n="nav.setting">Setting</span></a></li>
+        </ul>
+      </nav>
+      <div class="illustration">
+        <img src="{{ url_for('static', filename='imgs/image 1.png') }}" alt="Illustration" />
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="top-bar">
+        <div class="top-center">
+          <button class="language">Español</button>
+        </div>
+        <div class="top-right">
+          <div class="profile-card">
+            <div class="user-info">
+              <span id="user-photo" style="font-size: 20px; display: inline-block; line-height: 1;" aria-label="User">👤</span>
+              <div class="user-details">
+                <strong id="profile-name">{{ user_name }}</strong>
+              </div>
+              <button class="dropdown-toggle" id="dropdownToggle">▼</button>
+            </div>
+            <div class="dropdown-menu" id="dropdownMenu">
+              <ul>
+                <li id="logoutBtn">Log Out</li>
+              </ul>
+            </div>
+          </div>
+          <div class="confirm-modal" id="confirmModal">
+            <div class="confirm-box">
+              <p>Are you sure you want to log out?</p>
+              <div class="confirm-buttons">
+                <button id="confirmYes">Yes</button>
+                <button id="confirmNo">No</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Learning Progress Section -->
+      <section class="learning-progress-wrapper">
+        <div class="left-column">
+          <div class="top-header">
+            <h2 data-i18n="heading.title">Learning Progress</h2>
+            <p data-i18n="heading.subtitle">You're making steady progress! Keep going!</p>
+          </div>
+          <div class="card overall-progress">
+            <h3 data-i18n="heading.overall">Overall Progress</h3>
+            <div class="progress-bar-container">
+              <div class="progress-bar" style="width: 0%;"></div>
+            </div>
+            <div class="mini-metrics">
+              <div class="metric-box" data-i18n="milestones.quizzes">Total Quizzes<br><strong>0 / 0</strong></div>
+              <div class="metric-box" data-i18n="milestones.categories">Categories Mastered<br><strong>0 / 0</strong></div>
+            </div>
+          </div>
+          <div class="card category-progress">
+            <h3 data-i18n="heading.category">Category Progress</h3>
+          </div>
+        </div>
+        <div class="right-column">
+          <div class="card recent-performance">
+            <h3 data-i18n="heading.recent">Recent Performance</h3>
+            <div id="recent-performance-container"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Feedback Button -->
+      <button id="feedback-btn" class="feedback-fab"> 💬 Feedback</button>
+      <div id="feedback-modal" class="modal hidden">
+        <div class="modal-content">
+          <button class="close-modal">&times;</button>
+          <h2>Feedback Form</h2>
+          <p class="modal-subtitle">We'd love to hear from you! Your feedback helps us improve the experience for everyone.</p>
+          <form id="feedback-form">
+            <div class="form-group">
+              <p><strong>How is your experience using the site?</strong></p>
+              <div class="rating-options">
+                <label><input type="radio" name="experience" value="Not great"> Not great</label>
+                <label><input type="radio" name="experience" value="Okay"> Okay</label>
+                <label><input type="radio" name="experience" value="Good"> Good</label>
+                <label><input type="radio" name="experience" value="Great"> Great</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <p><strong>Did you experience any problems?</strong></p>
+              <div id="problem-options">
+                <label><input type="checkbox" name="problem" value="Audio did not play"> Audio did not play</label>
+                <label><input type="checkbox" name="problem" value="The video didn’t load"> The video didn’t load</label>
+                <label><input type="checkbox" name="problem" value="Transcription issue"> The studio didn’t transcribe my voice correctly</label>
+                <label><input type="checkbox" name="problem" value="Language switch issue"> The language didn’t switch properly</label>
+                <label><input type="checkbox" name="problem" value="Confusing content"> Something was confusing</label>
+                <label><input type="checkbox" name="problem" value="Other"> Other</label>
+              </div>
+              <textarea placeholder="The video..." name="problem-detail"></textarea>
+            </div>
+            <div class="form-group">
+              <p><strong>Anything else you’d like to share?</strong></p>
+              <textarea name="additional-feedback" placeholder="It was hard to understand one of the quiz questions..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Feedback</button>
+          </form>
+          <p class="thank-you">We appreciate your time—thank you for helping us improve!</p>
+        </div>
+      </div>
+    </main>
+  </div>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class="flashes">
+      {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+  <script>
+    async function fetchUserData() {
+      return {
+        name: "{{ user_name }}",
+        joinDate: "Apr 2025",
+        photo: "default-user-icon.png",
+        stats: {
+          completed: 0,
+          watched: 0,
+          inProgress: 0,
+          quizzes: 0
+        },
+        courses: [
+          { id: "overview", percent: 0 },
+          { id: "diagnosis", percent: 0 },
+          { id: "treatment", percent: 0 },
+          { id: "survivor", percent: 0 }
+        ],
+        upcoming: []
+      };
+    }
+    </script>
+  <script src="{{ url_for('static', filename='js/progress.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/feedback.js') }}" defer></script>
+</body>
+</html>

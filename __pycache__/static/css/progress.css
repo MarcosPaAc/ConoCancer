@@ -1,0 +1,193 @@
+.learning-progress {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.card {
+  background-color: #ead3f0;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.top-header {
+  grid-column: 1/-1;
+  padding-bottom: 10px;
+}
+
+.top-header h2 {
+  color: var(--primary);
+  margin-bottom: 5px;
+}
+
+.date-info {
+  font-size: 14px;
+  text-align: right;
+  color: var(--text-muted);
+}
+
+.progress-bar-container {
+  background: white;
+  height: 12px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 6px;
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, #5e1d6f, #caa2f2);
+  transition: width 0.3s;
+}
+
+.mini-metrics {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.metric-box {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 48%;
+  text-align: center;
+  font-size: 14px;
+}
+
+
+.badge {
+  background: #d7f1e4;
+  color: #4CAF50;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+.category-item {
+  margin-bottom: 12px;
+}
+
+.category-item label {
+  font-weight: bold;
+}
+
+.review-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+.review-btn {
+  background: white; /* 👈 Poppier pink shade */
+  color: #620042;
+  border: none;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.review-btn:hover {
+  background: #ffcce8;
+}
+.recent-performance .performance-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid white;
+
+}
+.recent-performance .performance-row:last-child {
+  border-bottom: none;
+}
+.score {
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+.score.blue {
+  background: #cce5ff;
+  color: #007bff;
+}
+
+.score.green {
+  background: #d4edda;
+  color: #28a745;
+}
+
+.score.pink {
+  background: #fcd3f9;
+  color: #c2185b;
+}
+.learning-progress-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr; /* Left is narrower than right */
+  gap: 30px;
+  align-items: stretch; /* Make both columns equal height */
+  margin-top: 30px;
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  height: 100%;
+  padding-top: 88px; /* 🟣 This tiny tweak aligns with Overall Progress */
+}
+
+
+
+
+
+
+/* Responsive Stack on Mobile */
+@media (max-width: 900px) {
+  .learning-progress-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+.recent-performance {
+  min-height: 100px;
+}
+.overall-progress,
+.category-progress,
+
+.recent-performance {
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.card {
+  width: 100%;
+  box-sizing: border-box;
+
+  
+}
+
+
+/* Add clean spacing below section titles */
+.overall-progress h2,
+.category-progress h3,
+.recent-performance h3 {
+  margin-bottom: 20px;
+}
+
+

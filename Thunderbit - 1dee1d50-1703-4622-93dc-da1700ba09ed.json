@@ -1,0 +1,81 @@
+﻿[
+  {
+    "Hospital Name": "Cohen Children's Medical Center",
+    "Hospital URL": "https://childrenshospital.northwell.edu/?_gl=1*qqlnxf*_ga*MTcyMDcxNDAzOS4xNzQ2MTU2NzYz*_ga_V2K1MB3F08*czE3NDYyODc5NTckbzQkZzEkdDE3NDYyODg1NjAkajAkbDAkaDE3NDg2NDY4MTE.*_fplc*czRhTkFYekVyTSUyRldjYmYlMkZkSmZiWlc0NUduJTJGOEJLT3g3S1p0ZmlHczJzdThrMTljWUhHeFVOT2RGZ0U5STJEem5vUFF6cjREMkpDVnNXRHRaRkNuaG9WV1JUVjVLV2QwaTNzOVZtJTJCNGpubVZJdXh6Nm9BVG5KQnlJYmViVUElM0QlM0Q.",
+    "Address": "269-01 76th Avenue, Queens, NY11040",
+    "Phone Number": "+17184703000",
+    "Description": "Cohen Children's Medical Center is one of the New York metropolitan area's top providers of pediatric care."
+  },
+
+  {
+    "Hospital Name": "Lenox Hill Hospital",
+    "Hospital URL": "https://lenoxhill.northwell.edu/",
+    "Address": "100 E 77th Street, New York, NY10075",
+    "Phone Number": "+12124342000",
+    "Description": "Lenox Hill Hospital is one of the cornerstones of Northwell Health, providing the full spectrum of clinical healthcare services for patients of all ages."
+  },
+
+  {
+    "Hospital Name": "Long Island Jewish Medical Center",
+    "Hospital URL": "https://lij.northwell.edu/",
+    "Address": "270-5 76th Avenue, New Hyde Park, NY11040",
+    "Phone Number": "+17184707000",
+    "Description": "Long Island Jewish Medical Center is one of the cornerstones of Northwell Health, providing the full spectrum of clinical healthcare services for patients of all ages."
+  },
+
+  {
+    "Hospital Name": "Mather Hospital",
+    "Hospital URL": "https://www.northwell.edu/mather-hospital",
+    "Address": "75 North Country RoadPort Jefferson, NY11777",
+    "Phone Number": "+16314731320",
+    "Description": "Mather Hospital is a recognized leader in patient safety and quality health care located in Port Jefferson, Long Island, NY."
+  },
+
+  {
+    "Hospital Name": "Northern Westchester Hospital",
+    "Hospital URL": "https://nwh.northwell.edu/",
+    "Address": "400 East Main Street, Mount Kisco, NY10549",
+    "Phone Number": "+19146661200",
+    "Description": "Northern Westchester Hospital in Mt. Kisco, NY, offers state-of-the-art technology and award-winning patient care."
+  },
+
+  {
+    "Hospital Name": "North Shore University Hospital",
+    "Hospital URL": "https://nsuh.northwell.edu/",
+    "Address": "300 Community Drive, Manhasset, NY11030",
+    "Phone Number": "+15165620100",
+    "Description": "North Shore University Hospital is one of the cornerstones of Northwell Health, providing the full spectrum of clinical healthcare services for patients of all ages."
+  },
+
+  {
+    "Hospital Name": "Peconic Bay Medical Center",
+    "Hospital URL": "https://www.northwell.edu/peconic-bay-medical-center",
+    "Address": "1300 Roanoke Avenue, Riverhead, NY11901",
+    "Phone Number": "+16315486000",
+    "Description": "Learn more about Peconic Bay Medical Center, a 182-bed community hospital and designated Stroke Center located in Riverhead, NY, featuring a highly regarded Emergency Department, an advanced surgery center, and Centers of Excellence in Joint Replacement and Bariatric Surgery, and a growing range of leading-edge medical services."
+  },
+
+  {
+    "Hospital Name": "South Shore University Hospital",
+    "Hospital URL": "https://ssuh.northwell.edu/",
+    "Address": "301 East Main StreetBay Shore, NY11706",
+    "Phone Number": "+16319683000",
+    "Description": "South Shore University Hospital provides the full spectrum of clinical healthcare services for patients of all ages."
+  },
+
+  {
+    "Hospital Name": "Staten Island University Hospital",
+    "Hospital URL": "https://siuh.northwell.edu/",
+    "Address": "475 Seaview AvenueStaten Island, NY10305",
+    "Phone Number": "+17182269000",
+    "Description": "Staten Island University Hospital began as a one-room infirmary more than 150 years ago, but we've grown to become a 668-bed teaching hospital that spans two campuses."
+  },
+
+  {
+    "Hospital Name": "Syosset Hospital",
+    "Hospital URL": "https://syosset.northwell.edu/",
+    "Address": "221 Jericho Turnpike, Syosset, NY11791",
+    "Phone Number": "+15164966400",
+    "Description": "We offer a wide range of care, with exceptional expertise in areas including orthopedics, bariatrics and pain management."
+  }
+]

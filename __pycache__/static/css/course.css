@@ -1,0 +1,443 @@
+/* =============== GENERAL COURSE LAYOUT =============== */
+.course-detail {
+  padding: 40px 60px;
+}
+
+.back-nav {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.course-container {
+  display: flex;
+  background-color: #f4e4f3;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 20px;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* =============== LESSON SIDEBAR =============== */
+.lesson-sidebar {
+  width: 300px;
+  border-right: 1px solid #ddd;
+  padding-right: 20px;
+}
+
+.lesson-sidebar h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #1b031b;
+}
+
+.lesson-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lesson-list li {
+  margin-bottom: 16px;
+  padding-left: 8px;
+  border-left: 4px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.lesson-list li.active {
+  border-left: 4px solid #772f81;
+  font-weight: bold;
+  background-color: #e5d0eb;
+  border-radius: 8px;
+}
+
+.lesson-list li:hover {
+  border-left-color: #a084dc;
+}
+
+.lesson-title {
+  display: block;
+  font-size: 14px;
+  color: #2e002d;
+}
+
+.lesson-time {
+  font-size: 12px;
+  color: #777;
+  margin-top: 4px;
+}
+
+/* =============== LESSON CONTENT AREA =============== */
+.lesson-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.breadcrumbs {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 16px;
+}
+.lesson-item.completed {
+  font-weight: bold;
+  color: green;
+}
+.lesson-status {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #7f32e0;
+}
+/* Mark as Read Button (shared with transcript styling) */
+.mark-as-read-btn {
+  background-color: #e5cce9;
+  color: #772f81;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: all 0.2s ease;
+}
+
+.mark-as-read-btn:hover {
+  background-color: #dcb3e6;
+}
+
+
+.lesson-item.completed .lesson-status {
+  color: green;
+  font-weight: bold;
+}
+
+.lesson-item.in-progress .lesson-status {
+  color: orange;
+}
+
+/* Tweak iframe height in reading if embedded */
+#reading-section iframe {
+  width: 100%;
+  height: 600px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Ensure spacing around embedded content */
+#reading-section,
+#quiz-section {
+  margin-top: 30px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+
+/* =============== VIDEO PLAYER =============== */
+.video-wrapper {
+  background-color: #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  margin-bottom: 30px; /* Bigger space below the video */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.video-wrapper iframe,
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  border: none;
+  object-fit: cover;
+}
+
+/* =============== TRANSCRIPT BUTTON =============== */
+.transcript-btn {
+  background-color: #e5cce9;
+  color: #772f81;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  align-self: flex-end;
+  transition: all 0.2s ease;
+}
+
+.transcript-btn:hover {
+  background-color: #dcb3e6;
+}
+
+/* =============== CONTENT BLOCKS (Reading + Quiz) =============== */
+.content-block {
+  margin-top: 30px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* READING */
+#reading-section h3 {
+  margin-bottom: 10px;
+  color: #4b084a;
+}
+
+/* QUIZ */
+#quiz-section h3 {
+  margin-bottom: 20px;
+  color: #4b084a;
+}
+
+.quiz-q {
+  margin-bottom: 20px;
+}
+
+.quiz-q textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  resize: none;
+  font-family: inherit;
+}
+
+/* =============== RESPONSIVE DESIGN =============== */
+@media (max-width: 900px) {
+  .course-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .lesson-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+
+  .lesson-content {
+    padding-top: 10px;
+  }
+}
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 16px;
+}
+
+.sidebar-nav li a {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  color: inherit;
+}
+
+.sidebar-nav li a:hover {
+  background-color: #f4d8f1;
+}
+
+.sidebar-nav li a img {
+  margin-right: 10px;
+}
+
+.sidebar-nav li.active a {
+  background-color: #ead3f0;
+  font-weight: bold;
+  color: #772f81;
+}
+
+.sidebar-nav li.active a span.nav-text {
+  color: #772f81;
+}
+#quiz-overlay {
+  display: none;
+  position: absolute;
+  z-index: 9999;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  pointer-events: auto;
+}
+
+
+
+#quiz-overlay button {
+  margin: 5px;
+  padding: 8px 16px;
+  background-color: #772f81;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+#quiz-overlay button:hover {
+  background-color: #5e2365;
+}
+.quiz-q {
+  background: #faf6fb;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+.quiz-q p {
+  font-weight: 600;
+  color: #4b084a;
+}
+/* Make sure video doesn't block the whole UI */
+.video-js {
+  position: relative !important;
+  z-index: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* Wrapper should also allow interaction */
+.video-wrapper {
+  position: relative !important;
+  z-index: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* Reset any fullscreen-related blocking behavior */
+.vjs-modal-dialog,
+.vjs-error-display,
+.vjs-fullscreen {
+  z-index: 1 !important;
+  pointer-events: auto !important;
+}
+.main-content, .course-detail, .sidebar, .lesson-sidebar {
+  pointer-events: auto !important;
+  z-index: 2 !important;
+}
+/* Embedded Video Quiz Styling */
+.quiz-container {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-family: inherit;
+}
+
+.quiz-container p {
+  font-weight: 600;
+  color: #4b084a;
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+
+.quiz-container button {
+  background-color: #772f81;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.quiz-container button:hover {
+  background-color: #5e2365;
+}
+.video-marker {
+  position: absolute;
+  bottom: 0;
+  width: 6px;
+  height: 6px;
+  background: rgb(12, 12, 12);
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+.vjs-control-bar {
+  opacity: 1 !important;
+}
+
+.vjs-has-started.vjs-user-inactive .vjs-control-bar {
+  opacity: 1 !important;
+}
+.lesson-item.completed {
+  background-color: #d6ffd6;
+}
+
+.lesson-item.completed .lesson-status {
+  color: green;
+  font-weight: bold;
+}
+
+
+/* Quiz Option Wrapper */
+.quiz-option {
+  display: flex;
+  align-items: center;
+  background-color: #f4e3f7;
+  border-radius: 10px;
+  padding: 10px 15px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #4b084a;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.quiz-option:hover {
+  background-color: #ecd0f0;
+  border-color: #c7a7d3;
+}
+
+.quiz-option input[type="radio"] {
+  margin-right: 10px;
+  accent-color: #772f81;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+.mic-btn,
+.save-answer-btn {
+  background-color: #e5cce9;
+  color: #772f81;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.mic-btn:hover,
+.save-answer-btn:hover {
+  background-color: #dcb3e6;
+}
+
+
+
+
+

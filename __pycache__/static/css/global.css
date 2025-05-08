@@ -1,0 +1,736 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+
+
+/* ===============================
+   🌍 GLOBAL DESIGN TOKENS
+================================== */
+:root {
+  --primary: #7f32e0;
+  --accent-purple: #772f81;
+  --highlight: #a084dc;
+  --orange: #ffa552;
+  --green: #70c27a;
+  --yellow: #f7c948;
+
+  --bg-light: #f8f4f1;
+  --bg-soft: #f5e9f3;
+  --bg-panel: #fff;
+
+  --text-main: #333;
+  --text-muted: #777;
+  --text-light: #999;
+
+  --border: #eee;
+
+  --font-main: 'Segoe UI', sans-serif;
+}
+
+/* ===============================
+   🔧 RESET + GLOBAL BASE STYLES
+================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-main);
+}
+
+body {
+  background-color: var(--bg-light);
+  color: var(--text-main);
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ===============================
+   📚 SIDEBAR NAVIGATION
+================================== */
+.sidebar {
+  width: 280px;
+  background-color: var(--bg-panel);
+  padding: 30px 24px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: mediumpurple;
+  padding: 10px;
+}
+
+.logo img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+
+.sidebar-nav ul {
+  list-style: none;
+}
+
+.sidebar-nav li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  margin-bottom: 12px;
+  color: var(--text-light);
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.sidebar-nav li:hover,
+.sidebar-nav li.active {
+  color: var(--primary);
+  font-weight: bold;
+  background-color: var(--bg-soft);
+}
+
+.sidebar-nav img {
+  width: 20px;
+  height: 20px;
+}
+
+.illustration img {
+  max-width: 100%;
+  height: auto;
+}
+/* ===============================
+   🔝 TOP BAR (header)
+================================== */
+/* Top Bar Container */
+/* TOP BAR LAYOUT */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  position: relative;
+  background-color: var(--bg-light);
+}
+
+/* Align 3 zones */
+.top-left,
+.top-center,
+.top-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+/* Align language button in the center */
+.top-center {
+  justify-content: center;
+}
+
+/* Right aligned profile card */
+.top-right {
+  justify-content: flex-end;
+}
+
+/* Language Button */
+.language {
+  background-color: transparent;
+  color: var(--accent-purple);
+  border: 1px solid var(--accent-purple);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.language:hover {
+  background-color: #eee;
+  color: var(--text-main);
+  border-color: #999;
+}
+
+
+/* Profile Card */
+.profile-card {
+  background: #f5e9f3;
+  padding: 12px 16px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: space-between;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  width: fit-content;
+  float: right;
+  margin-bottom: 40px;
+    position: relative; /* VERY important for proper dropdown positioning */
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-info img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+}
+
+.user-details strong {
+  display: block;
+  font-size: 14px;
+  color: #222;
+}
+
+.user-details span {
+  font-size: 12px;
+  color: #777;
+}
+
+.dropdown-toggle {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #444;
+}
+
+
+/* Dropdown Menu Style */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%; /* Exactly underneath the profile card */
+  left: 0; /* Aligned to left */
+  margin-top: 8px; /* tiny gap */
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  width: 180px;
+  z-index: 10;
+  padding: 10px 0;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-menu li {
+  padding: 12px 20px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f3e8ff;
+  color: #7f32e0;
+}
+
+/* Confirm Modal */
+.confirm-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.confirm-box {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  min-width: 300px;
+}
+
+.confirm-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.confirm-buttons button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#confirmYes {
+  background-color: #7f32e0;
+  color: white;
+}
+
+#confirmNo {
+  background-color: #ccc;
+}
+
+
+
+#confirmYes:hover {
+  background-color: #6a28bf;
+}
+
+#confirmNo:hover {
+  background-color: #bbb;
+}
+
+
+.profile-card:hover .dropdown-menu {
+  display: block;
+}
+.courses-section {
+  margin-top: 30px;
+  padding-right: 40px;
+}
+
+.section-title {
+  font-size: 26px;
+  margin-bottom: 25px;
+  font-weight: 700;
+  color: #222;
+}
+
+/* List Container */
+.course-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Individual Course */
+.course-item {
+  background-color: #D6C7DA;
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Left Part (Number + Title) */
+.course-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Number badge */
+.course-number {
+  background-color: #fff;
+  color: #4b084a;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Text Info */
+.course-text h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: #2e002d;
+}
+
+.course-text p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #555;
+}
+
+/* View Button */
+.view-btn {
+  background-color: #2b0036;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.view-btn:hover {
+  background-color: #4a025c;
+}
+/* Ensures main content doesn't hug the left edge */
+.main-content {
+  padding: 40px 60px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Optional: prevent content from stretching too wide */
+.page-section,
+.courses-section {
+  max-width: 1000px;
+  margin: 0 auto; /* center horizontally */
+  padding: 0 10px; /* small side breathing room */
+}
+/* remove the underline for links */
+a {
+  text-decoration: none;
+}
+
+/* ===============================
+   📱 MOBILE (up to 600px)
+================================== */
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px 20px;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .sidebar-nav ul {
+    display: flex;
+    gap: 10px;
+  }
+
+  .sidebar-nav li {
+    margin: 0;
+    font-size: 12px;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr; /* Stack cards vertically */
+    row-gap: 20px;
+    column-gap: 0;
+    justify-content: center;
+  }
+
+  .card {
+    width: 100%;
+    height: auto;
+  }
+
+  .video-card {
+    width: 100%;
+  }
+
+  .stats {
+    padding: 20px;
+  }
+
+  .stat-grid {
+    grid-template-columns: 1fr; /* Stats stacked vertically */
+  }
+}
+
+/* ===============================
+   📱📲 TABLETS (601px to 900px)
+================================== */
+@media (min-width: 601px) and (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 15px 20px;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .sidebar-nav ul {
+    display: flex;
+    gap: 20px;
+  }
+
+  .sidebar-nav li {
+    margin: 0;
+    font-size: 14px;
+  }
+
+  .main-content {
+    padding: 30px;
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr 1fr; /* Two cards per row */
+    gap: 15px;
+    justify-content: center;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .video-card {
+    width: 100%;
+  }
+
+  .stat-grid {
+    grid-template-columns: 1fr 1fr; /* Two stats per row */
+  }
+}
+
+/* ===============================
+   🖥️ DESKTOP (901px and up)
+================================== */
+@media (min-width: 901px) {
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr); /* Normal 2 columns */
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr); /* Normal 2 columns */
+  }
+}
+
+/* ===============================
+   💻 LAPTOPS (901px to 1440px)
+================================== */
+@media (min-width: 901px) and (max-width: 1440px) {
+  .container {
+    flex-direction: row;
+    height: 100vh;
+  }
+
+  .container {
+  flex-wrap: wrap;
+}
+
+  .sidebar-nav li {
+    font-size: 14px;
+  }
+
+  .main-content {
+    padding: 30px;
+  }
+
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px; /* add nice breathing space between cards */
+    row-gap: 25px;
+  }
+
+  .card {
+    width: 260px;
+    height: 160px;
+  }
+
+  .video-card {
+    width: 90%;
+  }
+
+  .stats {
+    padding: 20px 40px;
+    max-width: 500px;
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .profile-card {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 16px;
+}
+
+/* Ensure all anchors look the same */
+.sidebar-nav li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  text-decoration: none;
+  border-radius: 10px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 0.95rem;
+  color: #666;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.sidebar-nav li a img {
+  height: 20px;
+  width: 20px;
+  flex-shrink: 0;
+}
+
+.sidebar-nav li a:hover {
+  background-color: #f4d8f1;
+}
+
+/* Active item highlight */
+.sidebar-nav li.active a {
+  background-color: #ead3f0;
+  font-weight: 600;
+  color: #772f81;
+}
+/* Floating Feedback Button */
+.feedback-fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ead3f0;
+  color: #772f81;
+  font-weight: bold;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 999;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+.close-modal {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: #772f81;
+}
+
+.modal-subtitle {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.rating-options label,
+#problem-options label {
+  display: inline-block;
+  margin-right: 12px;
+  color: #333;
+}
+
+textarea {
+  width: 100%;
+  min-height: 60px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.submit-btn {
+  background: #772f81;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background: #5e2166;
+}
+
+.thank-you {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #444;
+}
+#problem-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Spacing between options */
+}
+
+#problem-options label {
+  display: block;
+  color: #333;
+  font-size: 15px;
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Settings & Personalization</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}" />
+</head>
+<body data-username="{{ user_name }}">
+  <div class="container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <span class="logo-text">ConoCancer</span>
+      </div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li><a href="{{ url_for('dashboard') }}"><img src="{{ url_for('static', filename='imgs/Home.png') }}" alt="Home Icon" /><span data-i18n="nav.dashboard">Dashboard</span></a></li>
+          <li><a href="{{ url_for('videos_and_articles') }}"><img src="{{ url_for('static', filename='imgs/Folder.png') }}" alt="Videos Icon" /> <span>Videos & Articles</span></a></li>
+          <li><a href="{{ url_for('resources') }}"><img src="{{ url_for('static', filename='imgs/Chat.png') }}" alt="Resources Icon" /><span data-i18n="nav.resources">Resources</span></a></li>
+          <li><a href="{{ url_for('progress') }}"><img src="{{ url_for('static', filename='imgs/Category.png') }}" alt="Progress Icon" /><span data-i18n="nav.progress">Progress</span></a></li>
+          <li class="active"><a href="#"><img src="{{ url_for('static', filename='imgs/Setting.png') }}" alt="Settings Icon" /><span data-i18n="nav.settings">Setting</span></a></li>
+        </ul>
+      </nav>
+      <div class="illustration">
+        <img src="{{ url_for('static', filename='imgs/image 1.png') }}" alt="Illustration" />
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="top-bar">
+        <div class="top-center">
+          <button class="language">Español</button>
+        </div>
+        <div class="top-right">
+          <div class="profile-card">
+            <div class="user-info">
+               <span id="user-photo" style="font-size: 20px; display: inline-block; line-height: 1;" aria-label="User">👤</span>
+              <div class="user-details">
+                <strong id="profile-name">{{ user_name }}</strong>
+              </div>
+              <button class="dropdown-toggle" id="dropdownToggle">▼</button>
+            </div>
+            <div class="dropdown-menu" id="dropdownMenu">
+              <ul>
+                <li id="logoutBtn">Log Out</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="settings-grid">
+        <div class="top-row">
+          <section class="card profile">
+            <h3>Profile</h3>
+            <div class="avatar">👤</div>
+            <p><strong>Name:</strong> <span id="user-name">{{ user_name }}</span></p>
+            <p><strong>Email:</strong> <span id="user-email">Loading...</span></p>
+            <p><strong>Preferred Language:</strong> <span id="user-lang">Loading...</span></p>
+          </section>
+
+          <section class="card preferences">
+            <h3>Learning Preferences</h3>
+            <p><strong>Health Interests</strong></p>
+            <ul id="user-preferences">
+              <li>Loading...</li>
+            </ul>
+            <p><strong>Preferred Content Format</strong><br><span id="user-format">Loading...</span></p>
+          </section>
+        </div>
+
+        <div class="bottom-row">
+          <section class="card security">
+            <h3>Security</h3>
+            <p><strong>Change Password</strong></p>
+            <form>
+              <input type="password" placeholder="Current Password" />
+              <input type="password" placeholder="New Password" />
+              <input type="password" placeholder="Confirm New Password" />
+              <button type="submit">Update Password</button>
+            </form>
+          </section>
+        </div>
+      </div>
+
+      <!-- Feedback Button -->
+      <button id="feedback-btn" class="feedback-fab">💬 Feedback</button>
+
+      <!-- Feedback Modal -->
+      <div id="feedback-modal" class="modal hidden">
+        <div class="modal-content">
+          <button class="close-modal">&times;</button>
+          <h2>Feedback Form</h2>
+          <p class="modal-subtitle">We'd love to hear from you! Your feedback helps us improve the experience for everyone.</p>
+          <form id="feedback-form">
+            <div class="form-group">
+              <p><strong>How is your experience using the site?</strong></p>
+              <div class="rating-options">
+                <label><input type="radio" name="experience" value="Not great"> Not great</label>
+                <label><input type="radio" name="experience" value="Okay"> Okay</label>
+                <label><input type="radio" name="experience" value="Good"> Good</label>
+                <label><input type="radio" name="experience" value="Great"> Great</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <p><strong>Did you experience any problems?</strong></p>
+              <div id="problem-options">
+                <label><input type="checkbox" name="problem" value="Audio did not play"> Audio did not play</label>
+                <label><input type="checkbox" name="problem" value="The video didn’t load"> The video didn’t load</label>
+                <label><input type="checkbox" name="problem" value="Transcription issue"> The studio didn’t transcribe my voice correctly</label>
+                <label><input type="checkbox" name="problem" value="Language switch issue"> The language didn’t switch properly</label>
+                <label><input type="checkbox" name="problem" value="Confusing content"> Something was confusing</label>
+                <label><input type="checkbox" name="problem" value="Other"> Other</label>
+              </div>
+              <textarea placeholder="The video..." name="problem-detail"></textarea>
+            </div>
+            <div class="form-group">
+              <p><strong>Anything else you’d like to share?</strong></p>
+              <textarea name="additional-feedback" placeholder="It was hard to understand one of the quiz questions..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Feedback</button>
+          </form>
+          <p class="thank-you">We appreciate your time—thank you for helping us improve!</p>
+        </div>
+      </div>
+    </main>
+  </div>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class="flashes">
+      {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+  <script>
+    async function fetchUserData() {
+      return {
+        name: "{{ user_name }}",
+        joinDate: "Apr 2025",
+        photo: "default-user-icon.png",
+        stats: {
+          completed: 0,
+          watched: 0,
+          inProgress: 0,
+          quizzes: 0
+        },
+        courses: [
+          { id: "overview", percent: 0 },
+          { id: "diagnosis", percent: 0 },
+          { id: "treatment", percent: 0 },
+          { id: "survivor", percent: 0 }
+        ],
+        upcoming: []
+      };
+    }
+    </script>
+
+  <script src="{{ url_for('static', filename='js/settings.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/feedback.js') }}" defer></script>
+
+</body>
+</html>
