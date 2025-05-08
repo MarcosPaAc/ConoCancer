@@ -25,7 +25,7 @@ def get_db_connection():
 # ------------------------
 @app.route("/")
 def root():
-    return redirect(url_for("index.html"))
+    return redirect(url_for("index"))
 
 # ------------------------
 # Inject user_name globally into all templates
