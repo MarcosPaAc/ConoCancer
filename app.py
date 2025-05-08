@@ -6,8 +6,11 @@ import hashlib
 import json
 import os
 import openai
+from support import get_all_support_groups
 
-app = Flask(__name__)
+app = Flask(__name__, 
+           template_folder='templates',  # Explicitly set the template folder
+           static_folder='static')       # Explicitly set the static folder
 app.secret_key = 'super_secret_key'  # 🔐 Use env var in production
 
 # ------------------------
@@ -20,12 +23,6 @@ def get_db_connection():
         password=os.environ.get('MYSQL_PASSWORD', '1234'),
         database=os.environ.get('MYSQL_DATABASE', 'conocancer')
     )
-# ------------------------
-# Root route to redirect to app 
-# ------------------------
-@app.route("/")
-def root():
-    return redirect(url_for("index"))
 
 # ------------------------
 # Inject user_name globally into all templates
@@ -598,4 +595,4 @@ def get_support_group_detail(group_id):
     return jsonify(grp or {"error": "Support group not found"}), 200 if grp else 404
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
